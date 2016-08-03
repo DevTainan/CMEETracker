@@ -48,7 +48,8 @@ namespace CMEETracker
             _cmeeSetting = new CMEESetting
             {
                 //QueueName = txtQueueName.Text,
-                QueueName = ConfigurationManager.AppSettings["ServerQueue"],
+                //QueueName = ConfigurationManager.AppSettings["ServerQueue"],
+                QueueName = "ken1",
                 IPAddress = txtIP.Text,
                 PortNumber = Convert.ToInt32(txtPort.Text),
                 McmqMaxSize = Convert.ToInt32(txtMaxSize.Text),

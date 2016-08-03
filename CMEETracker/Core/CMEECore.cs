@@ -109,6 +109,9 @@ namespace CMEETracker.Core
         // void SendPrimary(string m_ChannelId, string m_MessageId, string m_TargetModule, KXmlItem m_Message);
         public void Put(string queueName, string message)
         {
+            string returnCode1 = _mcmqApi.openQueue(queueName, McmqMaxSize, McmqMaxCount,
+                500000, 2500, cmeeAPI.cmeeQueueType.NonPersistent, "Event+的接收Queue");
+
             string returnCode = _mcmqApi.putQueue(queueName, Encoding.UTF8.GetBytes(message), QueueName, _mcmqApi.getCorrelationID, cmeeAPI.cmeeMsgEncrypted.NONE);
             
             if (returnCode.Equals(RETURN_CODE_SUCCESS, StringComparison.OrdinalIgnoreCase) == false)
